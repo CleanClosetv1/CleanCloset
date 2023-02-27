@@ -7,14 +7,15 @@ import downArrow from "./Image/down-arrow.png";
 import registrationForm from "./Image/registration-form.png";
 import rightArrow from "./Image/right-arrow.png";
 import user from "./Image/user.png";
+import { Link, NavLink } from "react-router-dom";
 
 const DonationTimelineContent = () => {
   return (
     <div className="DonationTimelineContentMainComponants">
       <div className="DotiButtonBack">
-        <a role="button">
+      <Link to="/DonorLandingPage">
           <img src={left} alt="" />
-        </a>
+      </Link>
       </div>
       <div className="DonationTimelineInfoContainer">
         <div className="DonationTimelineContents container">
@@ -88,9 +89,11 @@ const DonationTimelineContent = () => {
             </div>
           </div>
           <div className="DotiButton">
-            <button class="DonateButton" role="button">
+          <Link to="/DonorLandingPage/timeline/signup">
+            <button class="">
               Continue
             </button>
+          </Link>
           </div>
         </div>
       </div>

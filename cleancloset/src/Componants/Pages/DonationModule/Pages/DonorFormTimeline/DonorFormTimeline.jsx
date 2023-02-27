@@ -1,6 +1,5 @@
 import React from "react";
 import left from "./Image/left-arrow.png"
-// import "./DonorTimeline.css";
 import "./DonorFormTimeline.css";
 import certificate from "./Image/certificate.png";
 import delivery from "./Image/delivery.png";
@@ -8,21 +7,22 @@ import downArrow from "./Image/down-arrow.png";
 import registrationForm from "./Image/registration-form.png";
 import rightArrow from "./Image/right-arrow.png";
 import user from "./Image/user.png";
+import { Link } from "react-router-dom";
 
 const DonorFormTimeline = () => {
   return (
     <div className="DonationTimelineContentMainComponants">
       <div className="DotiButtonBack">
-        <a role="button">
+      <Link to="/DonorLandingPage">
           <img src={left} alt="" />
-        </a>
+      </Link>
       </div>
       <div className="DonationTimelineInfoContainer">
         <div className="DonationTimelineContents container">
         <div className="DtpContent">
 
           <h1>Donate now with these simple steps</h1>
-          <p>Lorem ipsum dolor sit amet.</p>
+          <p>Be the reason for someone happiness</p>
         </div>
           <div className="DonationTimelineCard">
             <div className="DonationTimeCardBody">
@@ -89,9 +89,12 @@ const DonorFormTimeline = () => {
             </div>
           </div>
           <div className="DotiButton">
-            <button class="DonateButton" role="button">
+          <Link to="/DonorLandingPage/timeline/signup">
+            
+            <button class="DonateButton">
               Continue
             </button>
+          </Link>
           </div>
         </div>
       </div>

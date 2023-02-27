@@ -1,0 +1,22 @@
+@import "../../GlobalCss/GlobalCss.scss";
+.UnderConsMainConatiner{
+    font-family: $ComfertaFont;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+.UnderConstructioContainer{
+    .giphy-embed{
+        width: 500px;
+        height: 500px;
+    }
+}
+.UnderConstHeading{
+    h1{
+        color: $GreenPrimaryColor;
+        text-shadow: $shadow2px;
+        font-size: 64px;
+    }
+}
+}

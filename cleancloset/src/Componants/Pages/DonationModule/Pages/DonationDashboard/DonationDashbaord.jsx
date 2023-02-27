@@ -10,9 +10,9 @@ import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import DonationOrderUpdate from "./DonationDashboardStages/DonationOrderUpdate/DonationOrderUpdate";
 
 const DonationDashbaord = () => {
-  
+  const { user, isAuthenticated, isLoading, logout, loginWithRedirect } = useAuth0();
   const { currentDashboard, setDashboard } = useContext(dashboardContext);
-  const { user } = useAuth0();
+  
   console.log(user);
   const ShowDashboardStep = (Dashboardstep) => {
     switch (Dashboardstep) {
@@ -34,16 +34,22 @@ const DonationDashbaord = () => {
       <div className="DonationDashboardContainer">
         <div className="DonationDashboardupProfile">
           <div className="DonationDashboardupProfileHeader container">
-            <div className="DonationDashboardupProfileHeaderImg">
-              <img src={Profilepic} alt="" />
+          {
+            isAuthenticated && <div className="DonationDashboardupProfileHeaderImg">
+            <img src={user.picture} alt={user.name} />
             </div>
+          }
+          {
+            isAuthenticated &&
             <div className="DonationDashboardupProfileHeaderInfo">
-              <h3>Varidh Srivastav</h3>
-              <h4>Banglore</h4>
+              <h3>{user.name}</h3>
+              <h4>{user.email}</h4>
               <div className="DonationDashboardupProfileHeaderInfoBtn">
                 <button>Edit Profile</button>
               </div>
             </div>
+          }
+           
             {/* <div className="DonationDashboardupProfileHeaderHelp">
 
             <p>Because of you now <span className="Big">02</span> people are able to walkk in winter </p> 

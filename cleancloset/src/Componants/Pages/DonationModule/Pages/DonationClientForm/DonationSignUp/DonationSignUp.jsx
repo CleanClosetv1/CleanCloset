@@ -4,11 +4,10 @@ import google from "./Image/google.png";
 import linkedin from "./Image/linkedin.png";
 import buddha from "./Image/buddha.png";
 import logo from "./Image/login.png";
-// import { useAuth0 } from "@auth0/auth0-react";
-
-
+import { useAuth0 } from "@auth0/auth0-react";
 
 const DonationSignUp = () => {
+  const { user, isAuthenticated, isLoading, logout, loginWithRedirect } = useAuth0();
   // const { loginWithRedirect } = useAuth0();
   // const { logout } = useAuth0();
   // const { user, isAuthenticated, isLoading } = useAuth0();
@@ -19,10 +18,26 @@ const DonationSignUp = () => {
         <div className="DsFLeftSideLogo">
           <img src={logo} alt="" />
         </div>
+        
           <div className="DsFleftSideContent">
             <h1>Sign in to CleanCloset</h1>
           </div>
           <div className="DsFleftLoginButtons">
+          {!isAuthenticated && <button onClick={() => loginWithRedirect(window.location.pathname === "/DonorLandingPage/timeline/signup/reg")} variant="default">Log in</button>}
+              <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+      Log Out
+    </button>
+    {
+    (isAuthenticated && (
+      <div>
+        <img src={user.picture} alt={user.name} />
+        <h2>{user.name}</h2>
+        <p>{user.email}</p>
+      </div>
+    )
+    )
+    }
+     
             <div className="GoogleLogin">
               <button  className="GoogleLoginButton DonationLoginButton">
                 <img src={google} alt="" />

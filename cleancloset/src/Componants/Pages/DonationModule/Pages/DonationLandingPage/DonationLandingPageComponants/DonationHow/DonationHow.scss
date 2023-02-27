@@ -1,7 +1,9 @@
-@import "../../../Globalcss//Globalcss.scss";
+// @import "../../../Globalcss//Globalcss.scss";
+@import "../../../../../../GlobalCss/GlobalCss.scss";
 
 .DonationHowMainContainer {
-    margin: 7em 0;
+    padding: 7em 0;
+    background-color: $greenLigntBackgroundColr;
     font-family: $ComfertaFont;
 
     .DonationHowContainer {

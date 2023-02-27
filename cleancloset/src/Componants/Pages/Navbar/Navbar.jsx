@@ -3,7 +3,9 @@ import "./Navbar.css";
 import logo from "./Image/cleanclosethighLogo.png"
 import { Link, NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+
 export const Navbar = () => {
+  
   const { user, isAuthenticated, isLoading, logout, loginWithRedirect } = useAuth0();
   var openNav = () => {
     var lastScrollTop = 0;
@@ -60,32 +62,27 @@ export const Navbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
+              {
+              (isAuthenticated &&
+              <NavLink to="/dash">
+                Dashboard
+              </NavLink>
+              )
+              }
               </li>
             </ul>
             <ul className="navbar-nav" id="DonateButtonNav">
-              <NavLink to="/DonorLandingPage" className="nav-link">
-                
+            {isAuthenticated && <NavLink to="/DonorLandingPage" className="nav-link">
                 <button class="button-18" role="button">
                 Donate Now
-              </button>
+            </button>  
+              </NavLink>}
               
-            
-              </NavLink>
-              {!isAuthenticated && <button onClick={() => loginWithRedirect({})} variant="default">Log in</button>}
-              <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+              {!isAuthenticated ? <button  class="button-18" onClick={() => loginWithRedirect(window.location.origin === "/DonorLandingPage/timeline/signup/reg")} variant="default">Log in</button>:<button  class="button-18" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
       Log Out
-    </button>
-    {
-    (isAuthenticated && (
-      <div>
-        <img src={user.picture} alt={user.name} />
-        <h2>{user.name}</h2>
-        <p>{user.email}</p>
-      </div>
-    )
-    )
-    }
-            </ul>
+    </button>}
+              
+       </ul>
           </div>
         </div>
       </nav>

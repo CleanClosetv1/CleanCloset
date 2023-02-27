@@ -6,6 +6,7 @@ import "aos/dist/aos.css";
 // from donationModule
 
 // Footer Header
+// import AddNgoForm from "./Componants/Pages/NgoModuleForm/AddNgoForm";
 import Footer from "./Componants/Pages/Footer/Footer";
 import Navbar from "./Componants/Pages/Navbar/Navbar";
 import "./Componants/GlobalCss/ButtonScss.css";
@@ -17,10 +18,16 @@ import DonorFormTimeline from "./Componants/Pages/DonationModule/Pages/DonorForm
 import Loading from "./Componants/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
 import ErrorPage from "./Componants/Pages/404page/404ErrorPage";
+import UnderConstructionPage from "./Componants/Pages/underConstructionPage/UnderConstructionPage";
+// import AddNgoForm from "./Componants/Pages/NgoModuleForm/AddNgoForm";
 
 // import { Auth0Provider } from "@auth0/auth0-react";
 
 // from DonationModule
+
+const Addngoform = lazy(()=>{
+  import("./Componants/Pages/AddNgoForm/AddNgoForm")
+})
 const DonationRegistration = lazy(()=>import("./Componants/Pages/DonationModule/Pages/DonationRegistrationForm/DonationRegistration"))
 const DonationFormContext = lazy(()=>import("./Componants/Pages/DonationModule/Pages/DonationRegistrationForm/DonationFormContext/DonationFormContext"))
 const DonationDashboardContext = lazy(()=>import("./Componants/Pages/DonationModule/Pages/DonationDashboard/DonatationDshboardContext/DonationDashboardContext"))
@@ -75,17 +82,18 @@ if (isLoading) {
       <Router>
         <Navbar />
         <Routes>
+        <Route path="underconstruction" exact element={<UnderConstructionPage/>}/>
           <Route path="/" exact element={<LandingPage />} />
-          <Route path="/DonorLandingPage/timeline" exact element={<DonationSignUp />} />
-          {/* <Route path="/timeline"  elemet={<DonorTimeline/>} /> */}
-         <Route path="time" element={ <DonorFormTimeline/>}/>
+          <Route path="/DonorLandingPage/timeline/signup" exact element={<DonationSignUp />} />
+
+         <Route path="/DonorLandingPage/timeline" element={ <DonorFormTimeline/>}/>
           <Route
             exact
             path="/DonorLandingPage"
             element={<DonationLandingPage />}
           />
           <Route
-            path="/reg"
+            path="/DonorLandingPage/timeline/signup/reg"
             exact
             element={
               <DonationFormContext>
@@ -100,14 +108,17 @@ if (isLoading) {
               <DonationDashboardContext>
                 <DonationDashbaord />
               </DonationDashboardContext>
-             
             }
           />
           <Route path="*" element={<ErrorPage/>}/>
           <Route exact path="/AboutUs" element={<AboutUs />} />
           <Route exact path="/ContactUs" element={<ContactUs />} />
+          <Route path="/NgoForm" exact element={<Addngoform/>}/>
         </Routes>
-        {window.location.pathname !== "/reg" ? <Footer /> : null}
+                {window.location.pathname !== ("/DonorLandingPage/timeline/signup/reg") && window.location.pathname !== ("/NgoForm")  ? <Footer />: null} 
+        
+                
+        
       </Router>
     </Suspense>
     {/* <Navbar/> */}

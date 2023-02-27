@@ -1,0 +1,17 @@
+.UnderConsMainConatiner {
+  font-family: "Comfortaa", cursive;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.UnderConsMainConatiner .UnderConstructioContainer .giphy-embed {
+  width: 500px;
+  height: 500px;
+}
+.UnderConsMainConatiner .UnderConstHeading h1 {
+  color: #246359;
+  text-shadow: 0px 2px, 2px 0px, 2px 2px;
+  font-size: 64px;
+}/*# sourceMappingURL=UnderConstructionPage.css.map */
